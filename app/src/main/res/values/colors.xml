@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="colorPrimary">#3F51B5</color>
+	<color name="colorPrimaryDark">#303F9F</color>
+	<color name="colorAccent">#FF4081</color>
+	<color name="inActiveBottomBarItemColor">#222222</color>
+
+	<color name="menuWishList">#9C27B0</color>
+	<color name="menuWishListDark">#7B1FA2</color>
+	<color name="menuGallery">#009688</color>
+	<color name="menuGalleryDark">#00796B</color>
+	<color name="menuStatistic">#2196F3</color>
+	<color name="menuStatisticDark">#1976D2</color>
+</resources>

@@ -1,0 +1,44 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+        mavenCentral()
+        jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://raw.githubusercontent.com/google/keyczar/master/java/maven/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+subprojects {
+    ext.global_compileSdkVersion = 25
+    ext.global_buildToolsVersion = "25.0.1"
+    ext.global_minSdkVersion = 16
+    ext.global_targetVersion = 25
+
+    ext.supportLibraryVersion = "25.1.0"
+    ext.lambokVersion = "1.16.12"
+    ext.moxy = "1.4.3"
+    ext.butterknife = "8.4.0"
+    ext.dagger = "2.7"
+    ext.dart = "2.0.1"
+    ext.retrofit = "2.1.0"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

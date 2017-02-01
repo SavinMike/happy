@@ -1,0 +1,34 @@
+<resources>
+
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="android:textColorPrimary">@android:color/white</item>
+	</style>
+
+
+	<style name="AppTheme.Gallery">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/menuGallery</item>
+		<item name="colorPrimaryDark">@color/menuGalleryDark</item>
+	</style>
+
+	<style name="AppTheme.Statistic">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/menuStatistic</item>
+		<item name="colorPrimaryDark">@color/menuStatisticDark</item>
+	</style>
+
+	<style name="AppTheme.WishList">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/menuWishList</item>
+		<item name="colorPrimaryDark">@color/menuWishListDark</item>
+	</style>
+
+	<style name="AppTheme.WishList.Button.Borderless" parent="Widget.AppCompat.Button.Borderless">
+
+	</style>
+</resources>

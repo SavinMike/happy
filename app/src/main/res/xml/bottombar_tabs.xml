@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+	<tab
+		barColorWhenSelected="@color/menuGallery"
+		icon="@drawable/ic_menu_gallery"
+		id="@+id/action_gallery"
+		title="@string/menu_gallery" />
+
+	<tab
+		barColorWhenSelected="@color/menuWishList"
+		icon="@drawable/ic_menu_cake"
+		id="@+id/action_wish_list"
+		title="@string/menu_wishList" />
+
+	<tab
+		barColorWhenSelected="@color/menuStatistic"
+		icon="@drawable/ic_menu_statistic"
+		id="@+id/action_statistic"
+		title="@string/menu_statistic" />
+</tabs>

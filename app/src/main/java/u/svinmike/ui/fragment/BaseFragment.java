@@ -52,7 +52,7 @@ public abstract class BaseFragment extends MvpAppCompatFragment implements Conte
 		return view;
 	}
 
-	protected abstract int getTheme();
+	public abstract int getTheme();
 
 	protected abstract int getContainerViewId();
 

@@ -1,8 +1,14 @@
 package u.svinmike.ui.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import butterknife.BindView;
 import u.svinmike.R;
 import u.svinmike.mvp.model.data.Image;
 
@@ -23,17 +29,12 @@ public class GalleryAdapter extends BaseRecyclerAdapter<GalleryAdapter.ViewHolde
 		return new ViewHolder(parent, this);
 	}
 
-	@Override
-	public int getItemCount() {
-		return 100;
-	}
-
-	@Override
-	public void onBindViewHolder(final ViewHolder holder, final int position) {
-
-	}
-
 	public static class ViewHolder extends BaseRecyclerAdapter.ViewHolder<Image> {
+
+		@BindView(R.id.item_gallery_itemImageView)
+		ImageView itemImageView;
+		@BindView(R.id.item_gallery_titleTextView)
+		TextView titleTextView;
 
 		public ViewHolder(final ViewGroup parentView, final BaseRecyclerAdapter<?, ?> tHomeToursAdapter) {
 			super(R.layout.item_gallery, parentView, tHomeToursAdapter);
@@ -41,7 +42,11 @@ public class GalleryAdapter extends BaseRecyclerAdapter<GalleryAdapter.ViewHolde
 
 		@Override
 		public void fillView(final Image wishList, final int position) {
+			Glide.with(itemView.getContext())
+					.load(Uri.parse(String.format("file:///android_asset/gallery/%s", wishList.getImage())))
+					.into(itemImageView);
 
+			titleTextView.setText(wishList.getTitle());
 		}
 	}
 }

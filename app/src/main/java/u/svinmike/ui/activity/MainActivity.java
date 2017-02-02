@@ -1,9 +1,11 @@
 package u.svinmike.ui.activity;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.TypedValue;
 import android.widget.FrameLayout;
 
 import com.roughike.bottombar.BottomBar;
@@ -11,6 +13,7 @@ import com.roughike.bottombar.BottomBar;
 import butterknife.BindView;
 import u.svinmike.R;
 import u.svinmike.ui.fragment.GalleryFragment;
+import u.svinmike.ui.fragment.NavigationFragment;
 import u.svinmike.ui.fragment.StatisticFragment;
 import u.svinmike.ui.fragment.WishListFragment;
 
@@ -33,7 +36,7 @@ public class MainActivity extends BaseActivity {
 		setContentView(R.layout.activity_main);
 
 		bottomNavigation.setOnTabSelectListener(tabId -> {
-			Fragment newFragment;
+			NavigationFragment newFragment;
 			switch (tabId) {
 				case R.id.action_gallery:
 					newFragment = new GalleryFragment();
@@ -50,6 +53,14 @@ public class MainActivity extends BaseActivity {
 
 			while (getSupportFragmentManager().getBackStackEntryCount() != 0) {
 				getSupportFragmentManager().popBackStackImmediate();
+			}
+
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+				setTheme(newFragment.getTheme());
+				TypedValue typedValue = new TypedValue();
+				getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
+				int color = typedValue.data;
+				getWindow().setStatusBarColor(color);
 			}
 
 			changeFragment(newFragment, String.valueOf(tabId), true, true);

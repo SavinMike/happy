@@ -22,4 +22,17 @@
 		app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginTop="?actionBarSize">
+
+		<ProgressBar
+			android:id="@+id/fragment_gallery_totalProgressBar"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true" />
+	</RelativeLayout>
+
+
 </android.support.design.widget.CoordinatorLayout>

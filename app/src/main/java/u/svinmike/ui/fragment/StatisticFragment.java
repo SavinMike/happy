@@ -10,7 +10,7 @@ import u.svinmike.R;
  */
 public class StatisticFragment extends NavigationFragment {
 	@Override
-	protected int getTheme() {
+	public int getTheme() {
 		return R.style.AppTheme_Statistic;
 	}
 	@Override

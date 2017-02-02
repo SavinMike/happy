@@ -1,8 +1,12 @@
 package u.svinmike.ui.adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import butterknife.BindView;
 import u.svinmike.R;
 import u.svinmike.mvp.model.data.WishList;
 
@@ -25,13 +29,22 @@ public class WishlistAdapter extends BaseRecyclerAdapter<WishlistAdapter.ViewHol
 
 	public static class ViewHolder extends BaseRecyclerAdapter.ViewHolder<WishList> {
 
+		@BindView(R.id.item_wishlist_itemImageView)
+		ImageView itemImageView;
+		@BindView(R.id.item_wishlist_doneImageView)
+		ImageView doneImageView;
+		@BindView(R.id.item_wishlist_titleTextView)
+		TextView titleTextView;
+
 		public ViewHolder(final ViewGroup parentView, final BaseRecyclerAdapter<?, ?> tHomeToursAdapter) {
 			super(R.layout.item_wishlist, parentView, tHomeToursAdapter);
 		}
 
 		@Override
 		public void fillView(final WishList wishList, final int position) {
-
+			itemImageView.setImageResource(wishList.getImage());
+			doneImageView.setVisibility(wishList.getActiveCount() == wishList.getCount() ? View.VISIBLE : View.INVISIBLE);
+			titleTextView.setText(wishList.getTitle());
 		}
 	}
 }

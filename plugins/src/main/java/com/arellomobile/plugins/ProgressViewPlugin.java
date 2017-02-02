@@ -52,7 +52,9 @@ public class ProgressViewPlugin extends SimplePlugin implements ProgressPlugin {
 
 	public void showProgress() {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			TransitionManager.beginDelayedTransition(container);
+			if (container != null) {
+				TransitionManager.beginDelayedTransition(container);
+			}
 		}
 
 		content.setVisibility(hideVisibility);
@@ -61,7 +63,9 @@ public class ProgressViewPlugin extends SimplePlugin implements ProgressPlugin {
 
 	public void hideProgress() {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			TransitionManager.beginDelayedTransition(container);
+			if (container != null) {
+				TransitionManager.beginDelayedTransition(container);
+			}
 		}
 
 		content.setVisibility(View.VISIBLE);

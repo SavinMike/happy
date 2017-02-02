@@ -1,10 +1,8 @@
 package u.svinmike.mvp.view;
 
-import android.graphics.Rect;
-
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
-import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
+import com.arellomobile.mvp.viewstate.strategy.AddToEndStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 import java.util.List;
@@ -13,23 +11,18 @@ import u.svinmike.mvp.model.data.Image;
 
 /**
  * Date: 02.02.2017
- * Time: 16:16
+ * Time: 23:56
  *
  * @author Savin Mikhail
  */
 @StateStrategyType(AddToEndSingleStrategy.class)
-public interface GalleryView extends MvpView {
+public interface SlideShowView extends MvpView {
 	void showTotalProgress();
-
-	void hideTotalProgress();
 
 	void showImages(List<Image> images);
 
-	void showPreview(Image image, Rect rect, int pos);
+	void hideTotalProgress();
 
-	void hidePreview();
-
-	@StateStrategyType(OneExecutionStateStrategy.class)
-	void back();
-
+	@StateStrategyType(AddToEndStrategy.class)
+	void slideToNext();
 }

@@ -22,7 +22,8 @@
 		app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-	<RelativeLayout
+	<FrameLayout
+		android:id="@+id/fragment_gallery_additionalRootFrameLayout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_marginTop="?actionBarSize">
@@ -31,8 +32,78 @@
 			android:id="@+id/fragment_gallery_totalProgressBar"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_centerInParent="true" />
-	</RelativeLayout>
+			android:layout_gravity="center" />
+
+		<RelativeLayout
+			android:id="@+id/fragment_gallery_clickBackgroundRelativeLayout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:alpha="0"
+			android:background="#88ffffff">
+
+			<android.support.v7.widget.CardView
+				android:id="@+id/fragment_gallery_clickRootView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_margin="16dp"
+				android:visibility="invisible"
+				app:cardCornerRadius="6dp">
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+
+					<ImageView
+						android:id="@+id/fragment_gallery_clickImageView"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:adjustViewBounds="true"
+						android:maxHeight="250dp"
+						android:scaleType="centerCrop"
+						android:src="@drawable/ic_test_1" />
+
+					<RelativeLayout
+						android:id="@+id/fragment_gallery_descriptionRelativeLayout"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginBottom="16dp"
+						android:layout_marginLeft="24dp"
+						android:layout_marginRight="24dp"
+						android:layout_marginTop="24dp">
+
+						<TextView
+							android:id="@+id/fragment_gallery_categoryTextView"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_toLeftOf="@+id/fragment_gallery_dateTextView"
+							android:gravity="left"
+							android:text="Дети" />
+
+						<TextView
+							android:id="@+id/fragment_gallery_dateTextView"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_alignParentRight="true"
+							android:layout_marginLeft="8dp"
+							android:layout_marginRight="12dp"
+							android:text="24.12.2010" />
+
+						<Button
+							android:id="@+id/fragment_gallery_slideshowButton"
+							style="@style/Widget.AppCompat.Button.Borderless.Colored"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_alignParentRight="true"
+							android:layout_below="@+id/fragment_gallery_dateTextView"
+							android:layout_marginTop="8dp"
+							android:text="Слайдшоу" />
+					</RelativeLayout>
+				</LinearLayout>
+			</android.support.v7.widget.CardView>
+		</RelativeLayout>
+	</FrameLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

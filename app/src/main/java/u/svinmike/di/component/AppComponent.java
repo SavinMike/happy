@@ -12,6 +12,7 @@ import u.svinmike.di.module.FormatterModule;
 import u.svinmike.di.module.RealmModule;
 import u.svinmike.di.module.RepositoryModule;
 import u.svinmike.mvp.presenter.GalleryPresenter;
+import u.svinmike.mvp.presenter.SlideShowPresenter;
 import u.svinmike.mvp.presenter.WishlistPresenter;
 
 /**
@@ -31,4 +32,6 @@ public interface AppComponent {
 	void inject(WishlistPresenter wishlistPresenter);
 
 	void inject(GalleryPresenter galleryPresenter);
+
+	void inject(SlideShowPresenter slideShowPresenter);
 }

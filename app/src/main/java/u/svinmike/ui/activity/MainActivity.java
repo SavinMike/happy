@@ -86,4 +86,19 @@ public class MainActivity extends BaseActivity {
 					.commitNowAllowingStateLoss();
 		}
 	}
+
+	@Override
+	public void onBackPressed() {
+		Fragment fragmentById = getSupportFragmentManager().findFragmentById(R.id.activity_main_containerFrameLayout);
+		if (fragmentById != null && fragmentById instanceof HandleBack) {
+			if (((HandleBack) fragmentById).onBackPressed()) {
+				return;
+			}
+		}
+		super.onBackPressed();
+	}
+
+	public interface HandleBack {
+		boolean onBackPressed();
+	}
 }

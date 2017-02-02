@@ -15,13 +15,12 @@
 	<com.roughike.bottombar.BottomBar
 		android:id="@+id/activity_main_bottomBar"
 		android:layout_width="wrap_content"
-		android:layout_height="60dp"
+		android:layout_height="66dp"
 		android:layout_gravity="bottom"
 		app:bb_activeTabAlpha="1"
 		app:bb_activeTabColor="@android:color/white"
-		app:bb_behavior="shifting|shy|underNavbar"
-		app:bb_inActiveTabAlpha="0.6"
+		app:bb_behavior="shy"
 		app:bb_inActiveTabColor="@color/inActiveBottomBarItemColor"
-		app:bb_showShadow="true"
+		app:bb_showShadow="false"
 		app:bb_tabXmlResource="@xml/bottombar_tabs" />
 </android.support.design.widget.CoordinatorLayout>

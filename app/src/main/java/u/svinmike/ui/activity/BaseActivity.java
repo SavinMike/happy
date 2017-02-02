@@ -12,6 +12,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.plugins.ContextProvider;
 import com.arellomobile.plugins.base.CompositionPlugin;
 import com.arellomobile.plugins.base.CompositionPluginDelegate;
+import com.f2prateek.dart.Dart;
 
 import butterknife.ButterKnife;
 
@@ -30,6 +31,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements Conte
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Dart.inject(this);
 		initPlugins(compositionPlugin);
 		compositionPlugin.onCreate();
 	}

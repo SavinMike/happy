@@ -5,6 +5,7 @@ import java.util.Date;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Tolerate;
@@ -18,6 +19,7 @@ import lombok.experimental.Tolerate;
 @Builder
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Image extends RealmObject implements Comparable<Image> {
 	public static final String ID = "image";
 	@PrimaryKey
@@ -45,5 +47,13 @@ public class Image extends RealmObject implements Comparable<Image> {
 			}
 		}
 		return i;
+	}
+
+	@Override
+	public String toString() {
+		return "Image{" +
+				"image='" + image + '\'' +
+				", thumb=" + thumb +
+				'}';
 	}
 }

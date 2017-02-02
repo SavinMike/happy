@@ -80,11 +80,15 @@ public abstract class BaseRecyclerAdapter<VH extends BaseRecyclerAdapter.ViewHol
 			this(LayoutInflater.from(parentView.getContext()).inflate(layoutId, parentView, false), tHomeToursAdapter);
 		}
 
-		protected ViewHolder(View view, final BaseRecyclerAdapter<?, ?> tHomeToursAdapter){
+		protected ViewHolder(View view, final BaseRecyclerAdapter<?, ?> tHomeToursAdapter) {
 			super(view);
 			mRootView = itemView;
 			mAdapter = tHomeToursAdapter;
 			ButterKnife.bind(this, mRootView);
+			initListeners();
+		}
+
+		protected void initListeners() {
 			mRootView.setOnClickListener(this);
 		}
 

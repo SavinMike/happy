@@ -1,70 +1,67 @@
 package u.svinmike.mvp.presenter;
 
-import android.graphics.Rect;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import u.svinmike.di.DependencyManager;
-import u.svinmike.mvp.model.data.Image;
 import u.svinmike.mvp.model.repository.ImagesRepository;
-import u.svinmike.mvp.view.GalleryView;
+import u.svinmike.mvp.view.SlideShowView;
 
 /**
  * Date: 02.02.2017
- * Time: 16:15
+ * Time: 23:56
  *
  * @author Savin Mikhail
  */
 @InjectViewState
-public class GalleryPresenter extends MvpPresenter<GalleryView> {
-
+public class SlideShowPresenter extends MvpPresenter<SlideShowView> {
 	@Inject
 	ImagesRepository imagesRepository;
-	private boolean previewVisible;
+	private Disposable subscribe;
 
-
-	public GalleryPresenter() {
+	public SlideShowPresenter() {
 		DependencyManager.getAppComponent().inject(this);
 
 		getViewState().showTotalProgress();
 		imagesRepository.getAll()
 				.toObservable()
 				.flatMapIterable(images -> images)
-				.filter(Image::isThumb)
+				.filter(image -> !image.isThumb())
 				.toList()
 				.subscribeOn(Schedulers.io())
 				.observeOn(AndroidSchedulers.mainThread())
 				.subscribe(images -> {
 					getViewState().showImages(images);
 					getViewState().hideTotalProgress();
+
+					startTimer();
 				});
 	}
 
-	public void userClickOnImage(final Image image, final Rect rect, final int pos) {
-		if (previewVisible) {
-			hidePreview();
-			return;
+	public void startTimer() {
+		if (subscribe != null) {
+			subscribe.dispose();
 		}
 
-		getViewState().showPreview(image, rect, pos);
-		previewVisible = true;
+		subscribe = Observable.interval(5, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+				.subscribeOn(Schedulers.io())
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribe(aLong -> {
+					getViewState().slideToNext();
+				});
 	}
 
-	private void hidePreview() {
-		previewVisible = false;
-		getViewState().hidePreview();
-	}
-
-	public void userClickBack() {
-		if(previewVisible){
-			hidePreview();
-		} else {
-			getViewState().back();
-		}
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		subscribe.dispose();
 	}
 }

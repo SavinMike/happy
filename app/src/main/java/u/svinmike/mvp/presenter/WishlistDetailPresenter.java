@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import u.svinmike.di.DependencyManager;
 import u.svinmike.mvp.model.repository.WishlistRepository;
 import u.svinmike.mvp.view.WishListDetailView;
 
@@ -24,6 +25,7 @@ public class WishlistDetailPresenter extends MvpPresenter<WishListDetailView> {
 	WishlistRepository wishlistRepository;
 
 	public WishlistDetailPresenter(int id) {
+		DependencyManager.getAppComponent().inject(this);
 		getViewState().startLoadingWishList();
 
 		wishlistRepository.getWishListDetail(id)

@@ -19,7 +19,7 @@ import lombok.experimental.Tolerate;
 @Builder
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 public class Image extends RealmObject implements Comparable<Image> {
 	public static final String ID = "image";
 	@PrimaryKey

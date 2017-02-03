@@ -14,6 +14,7 @@ import u.svinmike.di.module.RepositoryModule;
 import u.svinmike.mvp.model.formatter.DecimalFormatter;
 import u.svinmike.mvp.presenter.GalleryPresenter;
 import u.svinmike.mvp.presenter.SlideShowPresenter;
+import u.svinmike.mvp.presenter.WishlistDetailPresenter;
 import u.svinmike.mvp.presenter.WishlistPresenter;
 
 /**
@@ -37,4 +38,6 @@ public interface AppComponent {
 	void inject(GalleryPresenter galleryPresenter);
 
 	void inject(SlideShowPresenter slideShowPresenter);
+
+	void inject(WishlistDetailPresenter wishlistDetailPresenter);
 }

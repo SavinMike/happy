@@ -61,8 +61,7 @@
 						android:layout_height="wrap_content"
 						android:adjustViewBounds="true"
 						android:maxHeight="250dp"
-						android:scaleType="centerCrop"
-						android:src="@drawable/ic_test_1" />
+						android:scaleType="centerCrop"/>
 
 					<RelativeLayout
 						android:id="@+id/fragment_gallery_descriptionRelativeLayout"

@@ -57,7 +57,7 @@ public class WishlistRepository {
 				.id(2)
 				.image(R.drawable.ic_wishlist_free_days)
 				.title("Так не хочеться ни куда вставать.")
-				.description("Пинаешь мужа и говоришь, что сегодня не хочешь вести детей в садик, собирать их, одевать и т.д. Муж собирает детей, отводит их в садик и приезжает за тобой любимой).")
+				.description("Утро, а так не хочеться ни чего делать... Но у тебя есть выход активируешь желание и муж все сделает за тебя. Оденет и отведет детей в садик. А после этого приедит за тобой")
 				.count(5)
 				.build());
 
@@ -65,7 +65,7 @@ public class WishlistRepository {
 				.id(3)
 				.image(R.drawable.ic_wishlist_theater)
 				.title("Хочу в театр")
-				.description("Муж предлогает тебе на выбор несколько спектаклей, покупает понравившиеся тебе и идет с тобой туда. Необходимо предупредить за 1 месяц.")
+				.description("Поход в любой театр. Необходимо предупредить за 1 месяц.")
 				.count(3)
 				.build());
 
@@ -73,7 +73,7 @@ public class WishlistRepository {
 				.id(4)
 				.image(R.drawable.ic_wishlist_shopping)
 				.title("Мне не чего одеть.")
-				.description("Ну что-же теперь не отвертишься. Муж берет тебя и едит с тобой по магазинам в поисках чего-нибудь интересного. Честно пытаеться не зевать и не ищет повода, чтобы сбежать. Необходимо предупредить за 2 недели.")
+				.description("Ну что-же теперь не отвертишься. Собираемся и едим по магазинам в поисках чего-нибудь интересного. Необходимо предупредить за 2 недели.")
 				.count(1)
 				.price(6000f)
 				.build());
@@ -83,7 +83,7 @@ public class WishlistRepository {
 				.id(5)
 				.image(R.drawable.ic_wishlist_breakfast)
 				.title("Где мой завтрак в постель?")
-				.description("Инструкция:\n1) Пинаешь мужа и говоришь, что ты хочешь на завтрак.\n2)Муж встает с постели и идет делать тебе самый лучший завтрак.\n3) PROFIT")
+				.description("Так хочется чего-нибудь вкусненького на завтрак. И при этом не хочеться вставать...")
 				.count(7)
 				.build());
 
@@ -108,7 +108,16 @@ public class WishlistRepository {
 				.id(8)
 				.image(R.drawable.ic_wishlist_massage)
 				.title("Где мой массаж?")
+				.description("Массаж от головы до пят. С аромо маслами и теплым одеялком.")
 				.count(7)
+				.build());
+
+		wishLists.add(WishList.builder()
+				.id(9)
+				.image(R.drawable.ic_wishlist_hole)
+				.title("Пора бы что-то сделать с дыркой в туалете...")
+				.description("Зияющая дыра в туалете уже достала, ни чего страшного активируешь это желание и в течении недели она исчезает.")
+				.count(1)
 				.build());
 
 		return wishLists;
@@ -116,5 +125,9 @@ public class WishlistRepository {
 
 	public Maybe<WishList> getWishListDetail(final int id) {
 		return wishlistStorage.getById(id);
+	}
+
+	public void updateWish(final WishList wishList) {
+		wishlistStorage.saveModel(wishList);
 	}
 }

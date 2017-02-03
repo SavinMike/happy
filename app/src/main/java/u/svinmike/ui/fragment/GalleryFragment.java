@@ -24,6 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import u.svinmike.R;
+import u.svinmike.di.DependencyManager;
 import u.svinmike.mvp.model.data.Image;
 import u.svinmike.mvp.presenter.GalleryPresenter;
 import u.svinmike.mvp.view.GalleryView;
@@ -119,6 +120,8 @@ public class GalleryFragment extends NavigationFragment implements GalleryView, 
 		Glide.with(getContext())
 				.load(Uri.parse(String.format("file:///android_asset/gallery/%s", image.getImage())))
 				.into(imageView);
+		categoryTextView.setText(image.getCategory());
+		dateTextView.setText(DependencyManager.getAppComponent().dateStringFormatter().format(image.getDate()));
 
 		clickRootView.setTranslationX(rect.left);
 		clickRootView.setTranslationY(rect.top);

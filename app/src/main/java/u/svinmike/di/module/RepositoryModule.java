@@ -7,6 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 import u.svinmike.mvp.model.formatter.StringDateFormatter;
 import u.svinmike.mvp.model.repository.ImagesRepository;
+import u.svinmike.mvp.model.repository.StatisticRepository;
 import u.svinmike.mvp.model.repository.WishlistRepository;
 import u.svinmike.mvp.model.stoarage.ImageStorage;
 import u.svinmike.mvp.model.stoarage.WishlistStorage;
@@ -30,5 +31,11 @@ public class RepositoryModule {
 	@Singleton
 	ImagesRepository provideImagesRepository(ImageStorage imageStorage, @Named(FormatterModule.KEY_DATE) StringDateFormatter dateFormatter) {
 		return new ImagesRepository(imageStorage, dateFormatter);
+	}
+
+	@Provides
+	@Singleton
+	StatisticRepository provideStatisticRepository(@Named(FormatterModule.KEY_DATE) StringDateFormatter dateFormatter) {
+		return new StatisticRepository(dateFormatter);
 	}
 }

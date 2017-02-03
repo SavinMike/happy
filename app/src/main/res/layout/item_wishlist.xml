@@ -4,6 +4,7 @@
 				android:layout_height="wrap_content"
 				android:orientation="vertical">
 
+
 	<ImageView
 		android:id="@+id/item_wishlist_itemImageView"
 		android:layout_width="match_parent"
@@ -20,13 +21,26 @@
 		android:layout_margin="16dp"
 		android:src="@drawable/ic_check" />
 
-	<TextView
-		android:id="@+id/item_wishlist_titleTextView"
+	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_alignBottom="@+id/item_wishlist_itemImageView"
 		android:background="#90222222"
-		android:padding="16dp"
-		android:text="IMG_4123.jpg"
-		android:textColor="@android:color/white" />
+		android:orientation="horizontal"
+		android:padding="16dp">
+
+		<TextView
+			android:id="@+id/item_wishlist_titleTextView"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="IMG_4123.jpg"
+			android:textColor="@android:color/white" />
+
+		<TextView
+			android:id="@+id/item_wishlist_counterTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@android:color/white" />
+	</LinearLayout>
 </RelativeLayout>

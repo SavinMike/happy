@@ -11,11 +11,16 @@ import u.svinmike.di.module.ContextModule;
 import u.svinmike.di.module.FormatterModule;
 import u.svinmike.di.module.RealmModule;
 import u.svinmike.di.module.RepositoryModule;
+import u.svinmike.mvp.model.formatter.DateStringFormatter;
 import u.svinmike.mvp.model.formatter.DecimalFormatter;
+import u.svinmike.mvp.model.formatter.StringDateFormatter;
 import u.svinmike.mvp.presenter.GalleryPresenter;
 import u.svinmike.mvp.presenter.SlideShowPresenter;
+import u.svinmike.mvp.presenter.StatisticPresenter;
 import u.svinmike.mvp.presenter.WishlistDetailPresenter;
 import u.svinmike.mvp.presenter.WishlistPresenter;
+
+import static u.svinmike.di.module.FormatterModule.KEY_INTEGER;
 
 /**
  * Date: 02.02.2017
@@ -31,6 +36,15 @@ public interface AppComponent {
 
 	DecimalFormatter decimalFormatter();
 
+	@Named(KEY_INTEGER)
+	DecimalFormatter integerDecimalFormatter();
+
+	@Named(FormatterModule.KEY_DATE)
+	StringDateFormatter stringDateFormatter();
+
+	@Named(FormatterModule.KEY_DATE)
+	DateStringFormatter dateStringFormatter();
+
 	Context context();
 
 	void inject(WishlistPresenter wishlistPresenter);
@@ -40,4 +54,6 @@ public interface AppComponent {
 	void inject(SlideShowPresenter slideShowPresenter);
 
 	void inject(WishlistDetailPresenter wishlistDetailPresenter);
+
+	void inject(StatisticPresenter statisticPresenter);
 }

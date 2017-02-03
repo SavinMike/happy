@@ -24,6 +24,10 @@ public class WishlistPresenter extends MvpPresenter<WishlistView> {
 
 	public WishlistPresenter () {
 		DependencyManager.getAppComponent().inject(this);
+		updateList();
+	}
+
+	public void updateList() {
 		getViewState().showTotalProgress();
 		wishlistRepository.getAll()
 				.subscribeOn(Schedulers.io())
@@ -32,6 +36,6 @@ public class WishlistPresenter extends MvpPresenter<WishlistView> {
 					getViewState().hideTotalProgress();
 					getViewState().showWishList(wishLists);
 				});
-	}
 
+	}
 }

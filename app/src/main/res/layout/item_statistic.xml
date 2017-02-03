@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_width="match_parent"
+			  android:layout_height="wrap_content"
+			  android:orientation="vertical"
+			  android:padding="16dp">
+
+	<TextView
+		android:id="@+id/item_statistic_titleTextView"
+		style="@style/TextAppearance.AppCompat.Title.Inverse"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Время с первой встречи" />
+
+
+	<TextView
+		android:id="@+id/item_statistic_secTextView"
+		style="@style/TextAppearance.AppCompat.Display1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="24dp"
+		android:gravity="right"
+		android:text="1 199 120 400 сек"
+		android:textColor="@color/menuStatistic" />
+
+
+	<TextView
+		android:id="@+id/item_statistic_hoursTextView"
+		style="@style/TextAppearance.AppCompat.Display1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:gravity="right"
+		android:text="333 089 ч"
+		android:textColor="@color/menuStatistic" />
+
+	<TextView
+		android:id="@+id/item_statistic_dateTextView"
+		style="@style/TextAppearance.AppCompat.Display1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:gravity="right"
+		android:text="9 лет"
+		android:textColor="@color/menuStatistic" />
+</LinearLayout>

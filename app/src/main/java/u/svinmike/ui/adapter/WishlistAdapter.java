@@ -35,6 +35,8 @@ public class WishlistAdapter extends BaseRecyclerAdapter<WishlistAdapter.ViewHol
 		ImageView doneImageView;
 		@BindView(R.id.item_wishlist_titleTextView)
 		TextView titleTextView;
+		@BindView(R.id.item_wishlist_counterTextView)
+		TextView counterTextView;
 
 		public ViewHolder(final ViewGroup parentView, final BaseRecyclerAdapter<?, ?> tHomeToursAdapter) {
 			super(R.layout.item_wishlist, parentView, tHomeToursAdapter);
@@ -45,6 +47,9 @@ public class WishlistAdapter extends BaseRecyclerAdapter<WishlistAdapter.ViewHol
 			itemImageView.setImageResource(wishList.getImage());
 			doneImageView.setVisibility(wishList.getActiveCount() == wishList.getCount() ? View.VISIBLE : View.INVISIBLE);
 			titleTextView.setText(wishList.getTitle());
+
+			counterTextView.setVisibility(wishList.getActiveCount() == wishList.getCount() ? View.GONE : View.VISIBLE);
+			counterTextView.setText(String.format("%s/%s", wishList.getActiveCount(), wishList.getCount()));
 		}
 	}
 }

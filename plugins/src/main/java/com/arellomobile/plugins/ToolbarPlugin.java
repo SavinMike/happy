@@ -18,6 +18,7 @@ import com.arellomobile.plugins.base.GenericPlugin;
 public class ToolbarPlugin extends GenericPlugin<AppCompatActivity> {
 
 	private String title;
+	private Toolbar toolbar;
 
 	public ToolbarPlugin(final AppCompatActivity delegate) {
 		super(delegate);
@@ -42,7 +43,7 @@ public class ToolbarPlugin extends GenericPlugin<AppCompatActivity> {
 
 		if (view instanceof ViewGroup) {
 			for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
-				Toolbar toolbar = getToolbar(((ViewGroup) view).getChildAt(i));
+				toolbar = getToolbar(((ViewGroup) view).getChildAt(i));
 				if (toolbar != null) {
 					return toolbar;
 				}
@@ -54,5 +55,8 @@ public class ToolbarPlugin extends GenericPlugin<AppCompatActivity> {
 
 	public void setTitle(final String title) {
 		this.title = title;
+		if(toolbar!=null){
+			toolbar.setTitle(title);
+		}
 	}
 }

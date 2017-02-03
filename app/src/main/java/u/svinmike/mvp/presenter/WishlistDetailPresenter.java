@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import u.svinmike.di.DependencyManager;
+import u.svinmike.mvp.model.data.WishList;
 import u.svinmike.mvp.model.repository.WishlistRepository;
 import u.svinmike.mvp.view.WishListDetailView;
 
@@ -35,5 +36,11 @@ public class WishlistDetailPresenter extends MvpPresenter<WishListDetailView> {
 					getViewState().finishLoadingWishList();
 					getViewState().showWishList(wishList);
 				});
+	}
+
+	public void activateWish(WishList wishList) {
+		wishList.setActiveCount(wishList.getActiveCount() + 1);
+		wishlistRepository.updateWish(wishList);
+		getViewState().wishUpdated();
 	}
 }

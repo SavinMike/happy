@@ -1,5 +1,7 @@
 package u.svinmike.ui.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
@@ -28,6 +30,7 @@ import u.svinmike.ui.adapter.WishlistAdapter;
  * @author Savin Mikhail
  */
 public class WishListFragment extends NavigationFragment implements WishlistView {
+	private static final int REQUEST_CODE_WISH_DETAIL = 0;
 	@InjectPresenter
 	WishlistPresenter wishlistPresenter;
 
@@ -67,7 +70,7 @@ public class WishListFragment extends NavigationFragment implements WishlistView
 		DividerItemDecoration decor = new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL);
 		recyclerView.addItemDecoration(decor);
 		adapter = new WishlistAdapter(getContext());
-		adapter.setOnItemClickListener((view1, position) -> WishlistDetailActivity.startActivity(getContext(), adapter.getItem(position)));
+		adapter.setOnItemClickListener((view1, position) -> startActivityForResult(WishlistDetailActivity.createIntent(getContext(), adapter.getItem(position)), REQUEST_CODE_WISH_DETAIL));
 		recyclerView.setAdapter(adapter);
 	}
 
@@ -84,5 +87,13 @@ public class WishListFragment extends NavigationFragment implements WishlistView
 	@Override
 	public void hideTotalProgress() {
 		progressViewPlugin.hideProgress();
+	}
+
+	@Override
+	public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == REQUEST_CODE_WISH_DETAIL && resultCode == Activity.RESULT_OK){
+			wishlistPresenter.updateList();
+		}
 	}
 }

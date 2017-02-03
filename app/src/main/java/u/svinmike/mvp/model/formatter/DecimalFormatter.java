@@ -1,7 +1,6 @@
 package u.svinmike.mvp.model.formatter;
 
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 
 
 /**
@@ -12,25 +11,15 @@ import java.text.DecimalFormatSymbols;
  */
 public class DecimalFormatter implements Formatter<Number, String> {
 
-	private static final String ZERO = "0,00";
+	private DecimalFormat decimalFormat;
 
-	private static DecimalFormat sAlwaysSignedDecimalFormat;
-	private static DecimalFormat sUsualDecimalFormat;
-
-	static {
-		sAlwaysSignedDecimalFormat = new DecimalFormat("+ #,##0.00;- #");
-		sUsualDecimalFormat = new DecimalFormat("#,##0.00");
-		DecimalFormatSymbols symbols = new DecimalFormatSymbols();
-		symbols.setDecimalSeparator(',');
-		symbols.setGroupingSeparator(' ');
-
-		sAlwaysSignedDecimalFormat.setDecimalFormatSymbols(symbols);
-		sUsualDecimalFormat.setDecimalFormatSymbols(symbols);
+	public DecimalFormatter(final DecimalFormat decimalFormat) {
+		this.decimalFormat = decimalFormat;
 	}
 
 	@Override
 	public String format(final Number number) {
-		return sUsualDecimalFormat.format(number);
+		return decimalFormat.format(number);
 	}
 
 

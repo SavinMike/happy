@@ -17,7 +17,6 @@ import com.f2prateek.dart.Dart;
 import com.f2prateek.dart.InjectExtra;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import u.svinmike.R;
 import u.svinmike.di.DependencyManager;
 import u.svinmike.mvp.model.data.WishList;
@@ -35,10 +34,10 @@ public class WishlistDetailActivity extends BaseActivity implements WishListDeta
 	public static final String KEY_WISHLIST_ID = TAG + "KEY_WISHLIST_ID";
 	private BackPressedToolbarPlugin plugin;
 
-	public static void startActivity(Context context, WishList wishList) {
+	public static Intent createIntent(Context context, WishList wishList) {
 		Intent intent = new Intent(context, WishlistDetailActivity.class);
 		intent.putExtra(KEY_WISHLIST_ID, wishList.getId());
-		context.startActivity(intent);
+		return intent;
 	}
 
 	@BindView(R.id.activity_wishlist_description_checkImageView)
@@ -70,7 +69,6 @@ public class WishlistDetailActivity extends BaseActivity implements WishListDeta
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wishlist_description);
-		ButterKnife.bind(this);
 	}
 
 	@Override
@@ -104,6 +102,8 @@ public class WishlistDetailActivity extends BaseActivity implements WishListDeta
 		descriptionTextView.setText(wishList.getDescription());
 
 		plugin.setTitle(wishList.getTitle());
+
+		activateButton.setOnClickListener(v -> wishlistPresenter.activateWish(wishList));
 	}
 
 	@Override
@@ -121,5 +121,11 @@ public class WishlistDetailActivity extends BaseActivity implements WishListDeta
 	@Override
 	public void finishLoadingWishList() {
 
+	}
+
+	@Override
+	public void wishUpdated() {
+		setResult(RESULT_OK);
+		finish();
 	}
 }

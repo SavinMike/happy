@@ -54,7 +54,7 @@ public class WishlistDetailActivity extends BaseActivity implements WishListDeta
 	@BindView(R.id.activity_wishlist_description_activateButton)
 	Button activateButton;
 
-	@InjectExtra
+	@InjectExtra(KEY_WISHLIST_ID)
 	Integer id;
 
 	@InjectPresenter
@@ -94,7 +94,7 @@ public class WishlistDetailActivity extends BaseActivity implements WishListDeta
 			}
 		}
 
-		if(wishList.getPrice() == null){
+		if (wishList.getPrice() == null) {
 			priceTextView.setVisibility(View.GONE);
 		} else {
 			priceTextView.setVisibility(View.VISIBLE);

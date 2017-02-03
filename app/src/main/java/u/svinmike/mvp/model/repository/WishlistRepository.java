@@ -113,4 +113,8 @@ public class WishlistRepository {
 
 		return wishLists;
 	}
+
+	public Maybe<WishList> getWishListDetail(final int id) {
+		return wishlistStorage.getById(id);
+	}
 }

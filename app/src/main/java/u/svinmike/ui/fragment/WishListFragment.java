@@ -18,6 +18,7 @@ import u.svinmike.R;
 import u.svinmike.mvp.model.data.WishList;
 import u.svinmike.mvp.presenter.WishlistPresenter;
 import u.svinmike.mvp.view.WishlistView;
+import u.svinmike.ui.activity.WishlistDetailActivity;
 import u.svinmike.ui.adapter.WishlistAdapter;
 
 /**
@@ -66,9 +67,7 @@ public class WishListFragment extends NavigationFragment implements WishlistView
 		DividerItemDecoration decor = new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL);
 		recyclerView.addItemDecoration(decor);
 		adapter = new WishlistAdapter(getContext());
-		adapter.setOnItemClickListener((view1, position) -> {
-//			WishlistDetailActivity.startActivity(c)
-		});
+		adapter.setOnItemClickListener((view1, position) -> WishlistDetailActivity.startActivity(getContext(), adapter.getItem(position)));
 		recyclerView.setAdapter(adapter);
 	}
 

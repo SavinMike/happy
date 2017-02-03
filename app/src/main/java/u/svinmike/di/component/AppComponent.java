@@ -11,6 +11,7 @@ import u.svinmike.di.module.ContextModule;
 import u.svinmike.di.module.FormatterModule;
 import u.svinmike.di.module.RealmModule;
 import u.svinmike.di.module.RepositoryModule;
+import u.svinmike.mvp.model.formatter.DecimalFormatter;
 import u.svinmike.mvp.presenter.GalleryPresenter;
 import u.svinmike.mvp.presenter.SlideShowPresenter;
 import u.svinmike.mvp.presenter.WishlistPresenter;
@@ -26,6 +27,8 @@ import u.svinmike.mvp.presenter.WishlistPresenter;
 public interface AppComponent {
 	@Named(RealmModule.KEY_DEFAULT_CONFIGURATION)
 	RealmManager defaultRealmManager();
+
+	DecimalFormatter decimalFormatter();
 
 	Context context();
 

@@ -3,8 +3,6 @@ package u.svinmike.mvp.model.formatter;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
-import u.svinmike.mvp.model.formatter.params.DecimalFormatterParams;
-
 
 /**
  * Date: 05.12.2016
@@ -12,7 +10,7 @@ import u.svinmike.mvp.model.formatter.params.DecimalFormatterParams;
  *
  * @author Savin Mikhail
  */
-public class DecimalFormatter implements Formatter<DecimalFormatterParams, String> {
+public class DecimalFormatter implements Formatter<Number, String> {
 
 	private static final String ZERO = "0,00";
 
@@ -31,11 +29,8 @@ public class DecimalFormatter implements Formatter<DecimalFormatterParams, Strin
 	}
 
 	@Override
-	public String format(final DecimalFormatterParams number) {
-		if (number.getNumber() == 0) {
-			return ZERO;
-		}
-		return number.isAlwaysSigned() ? sAlwaysSignedDecimalFormat.format(number) : sUsualDecimalFormat.format(number);
+	public String format(final Number number) {
+		return sUsualDecimalFormat.format(number);
 	}
 
 
